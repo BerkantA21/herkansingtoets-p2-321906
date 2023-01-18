@@ -2,13 +2,12 @@
 <a href="<?= URLROOT ?>/instructeurs/create">Nieuw record</a>
 <table>
     <thead>
-        <th>Id</th>
-        <th>Naam</th>
-        <th>Hooftstad</th>
-        <th>Continent</th>
-        <th>Aantal Inwoners</th>
-        <th>Update</th>
-        <th>Delete</th>
+        <th>Voornaam</th>
+        <th>Tussenvoegsel</th>
+        <th>Achternaam</th>
+        <th>Mobiel</th>
+        <th>Datum in dienst</th>
+        <th>Toevoegen Auto</th>
     </thead>
     <tbody>
         <?= $data['rows']; ?>

@@ -21,22 +21,19 @@ class Instructeurs extends Controller
         foreach ($records as $items)
         {
             $rows .= "<tr>
-                        <td>$items->Id</td>
-                        <td>$items->Name</td>
-                        <td>$items->CapitalCity</td>
-                        <td>$items->Continent</td>
-                        <td>$items->Population</td>
+                        <td>$items->Voornaam</td>
+                        <td>$items->Tussenvoegsel</td>
+                        <td>$items->Achternaam</td>
+                        <td>$items->Mobiel</td>
+                        <td>$items->Datum_in_dienst</td>
                         <td>
-                            <a href='" . URLROOT . "/instructeurs/update/$items->Id'>update</a>
-                        </td>
-                        <td>
-                            <a href='" . URLROOT . "/instructeurs/delete/$items->Id'>delete</a>
+                            <a href='" . URLROOT . "/instructeurs/update/$items->Id'> + </a>
                         </td>
                       </tr>";
         }
 
         $data = [
-            'title' => "Overzicht landen",
+            'title' => "Alle instructeurs zonder Auto",
             'rows' => $rows
         ];
         $this->view('instructeurs/index', $data);

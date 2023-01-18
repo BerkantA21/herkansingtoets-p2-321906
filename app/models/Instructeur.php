@@ -59,13 +59,6 @@ class Instructeur
         return $this->db->execute();
     }
 
-    public function deleteInstructeur($id)
-    {
-        $this->db->query("DELETE FROM instructeur WHERE Id = :id");
-        $this->db->bind(':id', $id, PDO::PARAM_INT);
-        return $this->db->execute();
-    }
-
     public function createInstructeur($post)
     {
         $this->db->query("INSERT INTO instructeur (Id, 
