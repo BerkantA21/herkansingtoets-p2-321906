@@ -21,6 +21,7 @@ class Instructeurs extends Controller
         foreach ($records as $items)
         {
             $rows .= "<tr>
+                        <td>$items->Id</td>
                         <td>$items->Voornaam</td>
                         <td>$items->Tussenvoegsel</td>
                         <td>$items->Achternaam</td>
@@ -60,8 +61,8 @@ class Instructeurs extends Controller
         $data = [
             'title' => 'Beschikbare Autos',
             'Id' => $record->Id,
-            'Type' => $record->Type,
             'Kenteken' => $record->Kenteken,
+            'Type' => $record->Type,
             'Bouwjaar' => $record->Bouwjaar,
             'Brandstof' => $record->Brandstof
         ]; 

@@ -1,6 +1,7 @@
 <h3><?= $data['title'] ?></h3>
 <table>
     <thead>
+        <th>Id</th>
         <th>Voornaam</th>
         <th>Tussenvoegsel</th>
         <th>Achternaam</th>

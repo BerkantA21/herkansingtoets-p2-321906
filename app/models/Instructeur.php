@@ -23,16 +23,15 @@ class Instructeur
 
     public function getInstructeur()
     {
-        $this->db->query("SELECT Instructeur.Datum_in_dienst
-                                ,Instructeur.Id as LEID
-                                ,Auto.Id
-                                ,Instructeur.Instructeur as LENA
-                                ,Auto.Naam as INNA
-                          FROM Auto
+        $this->db->query("SELECT Instructeur.Id
+                                ,Instructeur.Voornaam
+                                ,Instructeur.Tussenvoegsel
+                                ,Instructeur.Achternaam
+                                ,Instructeur.Mobiel
+                                ,Instructeur.Datum_in_dienst
+                          FROM Instructeur
                           INNER JOIN Auto
-                          ON Auto.InstructeurId = Instructeur.Id
-                          INNER JOIN Instructeur
-                          ON Auto.Id = Instructeur.AutoId
+                          ON InstructeurId = Instructeur.Id
                           WHERE InstructeurId = :Id");
 
         $this->db->bind(':Id', 2, PDO::PARAM_INT);
@@ -44,17 +43,17 @@ class Instructeur
     {
         // var_dump($data);exit();
         $this->db->query("UPDATE Instructeur
-                          SET Type = :Type,
-                              Kenteken = :Kenteken,
+                          SET Kenteken = :Kenteken,
+                              Type = :Type,
                               Bouwjaar = :Bouwjaar,
                               Brandstof = :Brandstof
                           WHERE Id = :Id");
 
-        $this->db->bind(':Type', $data['type'], PDO::PARAM_STR);
-        $this->db->bind(':Kenteken', $data['kenteken'], PDO::PARAM_STR);
-        $this->db->bind(':Bouwjaar', $data['bouwjaar'], PDO::PARAM_STR);
-        $this->db->bind(':Brandstof', $data['brandstof'], PDO::PARAM_INT);
-        $this->db->bind(':Id', $data['id'], PDO::PARAM_INT);
+        $this->db->bind(':Kenteken', $data['Kenteken'], PDO::PARAM_STR);
+        $this->db->bind(':Type', $data['Type'], PDO::PARAM_STR);
+        $this->db->bind(':Bouwjaar', $data['Bouwjaar'], PDO::PARAM_STR);
+        $this->db->bind(':Brandstof', $data['Brandstof'], PDO::PARAM_INT);
+        $this->db->bind(':Id', $data['Id'], PDO::PARAM_INT);
 
         return $this->db->execute();
     }
