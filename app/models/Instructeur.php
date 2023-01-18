@@ -1,37 +1,37 @@
 <?php
 
 /**
- * Dit is de model voor de controller Countries
+ * Dit is de model voor de controller Instructeurs
  */
 
-class Country
+class Instructeur
 {
     //properties
     private $db;
 
-    // Dit is de constructor van de Country model class
+    // Dit is de constructor van de Instructeur model class
     public function __construct()
     {
         $this->db = new Database();
     }
 
-    public function getCountries()
+    public function getInstructeurs()
     {
-        $this->db->query('SELECT * FROM Country');
+        $this->db->query('SELECT * FROM Instructeur');
         return $this->db->resultSet();
     }
 
-    public function getCountry($id)
+    public function getInstructeur($id)
     {
-        $this->db->query("SELECT * FROM Country WHERE Id = :id");
+        $this->db->query("SELECT * FROM Instructeur WHERE Id = :id");
         $this->db->bind(':id', $id, PDO::PARAM_INT);
         return $this->db->single();
     }
 
-    public function updateCountry($data)
+    public function updateInstructeur($data)
     {
         // var_dump($data);exit();
-        $this->db->query("UPDATE Country
+        $this->db->query("UPDATE Instructeur
                           SET Name = :Name,
                               CapitalCity = :CapitalCity,
                               Continent = :Continent,
@@ -47,16 +47,16 @@ class Country
         return $this->db->execute();
     }
 
-    public function deleteCountry($id)
+    public function deleteInstructeur($id)
     {
-        $this->db->query("DELETE FROM country WHERE Id = :id");
+        $this->db->query("DELETE FROM instructeur WHERE Id = :id");
         $this->db->bind(':id', $id, PDO::PARAM_INT);
         return $this->db->execute();
     }
 
-    public function createCountry($post)
+    public function createInstructeur($post)
     {
-        $this->db->query("INSERT INTO country (Id, 
+        $this->db->query("INSERT INTO instructeur (Id, 
                                                Name, 
                                                CapitalCity, 
                                                Continent, 
