@@ -58,12 +58,12 @@ class Instructeurs extends Controller
         $record = $this->instructeurModel->getInstructeur($id);
 
         $data = [
-            'title' => 'Update Landen',
+            'title' => 'Beschikbare Autos',
             'Id' => $record->Id,
-            'Name' => $record->Name,
-            'CapitalCity' => $record->CapitalCity,
-            'Continent' => $record->Continent,
-            'Population' => $record->Population
+            'Type' => $record->Type,
+            'Kenteken' => $record->Kenteken,
+            'Bouwjaar' => $record->Bouwjaar,
+            'Brandstof' => $record->Brandstof
         ]; 
         $this->view('instructeur/update', $data);
     }
@@ -78,28 +78,5 @@ class Instructeurs extends Controller
             echo "Internal servererror, het record is niet verwijderd";
             header("Refresh: 3; URL=" . URLROOT . "/instructeur/index");
         }
-    }
-
-    public function create()
-    {
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            // $_POST array schoonmaken
-            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-
-            $result = $this->instructeurModel->createInstructeur($_POST);
-
-            if ($result) {
-                echo "Het invoeren is gelukt";
-                header("Refresh:3; URL=" . URLROOT . "/instructeur/index");
-            } else {
-                echo "Het invoeren is NIET gelukt";
-                header("Refresh:3; URL=" . URLROOT . "/instructeur/index");
-            }
-        }
-
-        $data = [
-            'title' => 'Voeg een nieuw land toe'
-        ];
-        $this->view('instructeur/create', $data);
     }
 }

@@ -4,20 +4,20 @@
     <table>
         <tbody>
             <tr>
-                <td>Land:</td>
-                <td><input type="text" name="name" id="name" value="<?= $data['Name']; ?>"></td>
+                <td>Type:</td>
+                <td><input type="text" name="type" id="type" value="<?= $data['Type']; ?>"></td>
             </tr>
             <tr>
-                <td>Hoofstad:</td>
-                <td><input type="text" name="capitalCity" id="capitalCity" value="<?= $data['CapitalCity']; ?>"></td>
+                <td>Kenteken:</td>
+                <td><input type="text" name="kenteken" id="kenteken" value="<?= $data['Kenteken']; ?>"></td>
             </tr>
             <tr>
-                <td>Continent:</td>
-                <td><input type="text" name="continent" id="continent" value="<?= $data['Continent']; ?>"></td>
+                <td>Bouwjaar:</td>
+                <td><input type="text" name="bouwjaar" id="bouwjaar" value="<?= $data['Bouwjaar']; ?>"></td>
             </tr>
             <tr>
-                <td>Aantal inwoners:</td>
-                <td><input type="text" name="population" id="population" value="<?= $data['Population']; ?>"></td>
+                <td>Brandstof:</td>
+                <td><input type="text" name="brandstof" id="brandstof" value="<?= $data['Brandstof']; ?>"></td>
             </tr>
             <tr>
                 <td><input type="hidden" name="id" id="id" value="<?= $data['Id']; ?>"></td>

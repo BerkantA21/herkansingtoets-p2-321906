@@ -44,41 +44,19 @@ class Instructeur
     {
         // var_dump($data);exit();
         $this->db->query("UPDATE Instructeur
-                          SET Name = :Name,
-                              CapitalCity = :CapitalCity,
-                              Continent = :Continent,
-                              Population = :Population
+                          SET Type = :Type,
+                              Kenteken = :Kenteken,
+                              Bouwjaar = :Bouwjaar,
+                              Brandstof = :Brandstof
                           WHERE Id = :Id");
 
-        $this->db->bind(':Name', $data['name'], PDO::PARAM_STR);
-        $this->db->bind(':CapitalCity', $data['capitalCity'], PDO::PARAM_STR);
-        $this->db->bind(':Continent', $data['continent'], PDO::PARAM_STR);
-        $this->db->bind(':Population', $data['population'], PDO::PARAM_INT);
+        $this->db->bind(':Type', $data['type'], PDO::PARAM_STR);
+        $this->db->bind(':Kenteken', $data['kenteken'], PDO::PARAM_STR);
+        $this->db->bind(':Bouwjaar', $data['bouwjaar'], PDO::PARAM_STR);
+        $this->db->bind(':Brandstof', $data['brandstof'], PDO::PARAM_INT);
         $this->db->bind(':Id', $data['id'], PDO::PARAM_INT);
 
         return $this->db->execute();
     }
-
-    public function createInstructeur($post)
-    {
-        $this->db->query("INSERT INTO instructeur (Id, 
-                                               Name, 
-                                               CapitalCity, 
-                                               Continent, 
-                                               Population)
-                          VALUES              (:Id,
-                                               :Name,
-                                               :CapitalCity,
-                                               :Continent,
-                                               :Population)");
-        $this->db->bind(':Id', NULL, PDO::PARAM_NULL);
-        $this->db->bind(':Name', $post['name'], PDO::PARAM_STR);
-        $this->db->bind(':CapitalCity', $post['capitalCity'], PDO::PARAM_STR);
-        $this->db->bind(':Continent', $post['continent'], PDO::PARAM_STR);
-        $this->db->bind(':Population', $post['population'], PDO::PARAM_INT);
-        return $this->db->execute();
-
-    }
-
 
 }
