@@ -23,7 +23,7 @@ class Instructeur
 
     public function getInstructeur()
     {
-        $this->db->query("SELECT Instructeur.Datum
+        $this->db->query("SELECT Instructeur.Datum_in_dienst
                                 ,Instructeur.Id as LEID
                                 ,Auto.Id
                                 ,Instructeur.Instructeur as LENA
