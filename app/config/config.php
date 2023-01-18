@@ -6,6 +6,6 @@
 
     define('APPROOT', dirname(dirname(__FILE__)));
 
-    define('URLROOT', 'http://mvc-oop-pdo-toets-herkansing-userstory.com');
+    define('URLROOT', 'http://mvc-oop-pdo-herkansing-userstory.com');
 
     define('SITENAME', 'mvc-2109a');

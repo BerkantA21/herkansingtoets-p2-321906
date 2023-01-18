@@ -21,11 +21,23 @@ class Instructeur
         return $this->db->resultSet();
     }
 
-    public function getInstructeur($id)
+    public function getInstructeur()
     {
-        $this->db->query("SELECT * FROM Instructeur WHERE Id = :id");
-        $this->db->bind(':id', $id, PDO::PARAM_INT);
-        return $this->db->single();
+        $this->db->query("SELECT Instructeur.Datum
+                                ,Instructeur.Id as LEID
+                                ,Auto.Id
+                                ,Instructeur.Instructeur as LENA
+                                ,Auto.Naam as INNA
+                          FROM Auto
+                          INNER JOIN Auto
+                          ON Auto.InstructeurId = Instructeur.Id
+                          INNER JOIN Instructeur
+                          ON Auto.Id = Instructeur.AutoId
+                          WHERE InstructeurId = :Id");
+
+        $this->db->bind(':Id', 2, PDO::PARAM_INT);
+
+        return $this->db->resultSet();
     }
 
     public function updateInstructeur($data)
