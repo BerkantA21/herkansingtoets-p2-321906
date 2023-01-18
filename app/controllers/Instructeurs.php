@@ -1,19 +1,19 @@
 <?php
 
-class Countries extends Controller
+class Instructeurs extends Controller
 {
     //properties
-    private $countryModel;
+    private $instructeurModel;
 
     // Dit is de constructor van de controller
     public function __construct() 
     {
-        $this->countryModel = $this->model('Country');
+        $this->instructeurModel = $this->model('Instructeur');
     }
 
-    public function index($land = 'Nederland', $age = 67)
+    public function index()
     {
-        $records = $this->countryModel->getCountries();
+        $records = $this->instructeurModel->getInstructeurs();
         //var_dump($records);
 
         $rows = '';
@@ -27,10 +27,10 @@ class Countries extends Controller
                         <td>$items->Continent</td>
                         <td>$items->Population</td>
                         <td>
-                            <a href='" . URLROOT . "/countries/update/$items->Id'>update</a>
+                            <a href='" . URLROOT . "/instructeurs/update/$items->Id'>update</a>
                         </td>
                         <td>
-                            <a href='" . URLROOT . "/countries/delete/$items->Id'>delete</a>
+                            <a href='" . URLROOT . "/instructeurs/delete/$items->Id'>delete</a>
                         </td>
                       </tr>";
         }
@@ -39,7 +39,7 @@ class Countries extends Controller
             'title' => "Overzicht landen",
             'rows' => $rows
         ];
-        $this->view('countries/index', $data);
+        $this->view('instructeurs/index', $data);
     }
 
     public function update($id = null) 
@@ -53,12 +53,12 @@ class Countries extends Controller
              */
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-            $this->countryModel->updateCountry($_POST);
+            $this->instructeurModel->updateInstructeur($_POST);
 
-            header("Location: " . URLROOT . "/country/index");
+            header("Location: " . URLROOT . "/instructeur/index");
         }
 
-        $record = $this->countryModel->getCountry($id);
+        $record = $this->instructeurModel->getInstructeur($id);
 
         $data = [
             'title' => 'Update Landen',
@@ -68,18 +68,18 @@ class Countries extends Controller
             'Continent' => $record->Continent,
             'Population' => $record->Population
         ]; 
-        $this->view('countries/update', $data);
+        $this->view('instructeur/update', $data);
     }
 
     public function delete($id)
     {
-        $result = $this->countryModel->deleteCountry($id);
+        $result = $this->instructeurModel->deleteInstructeur($id);
         if ($result) {
             echo "Het record is verwijderd uit de database";
-            header("Refresh: 3; URL=" . URLROOT . "/countries/index");
+            header("Refresh: 3; URL=" . URLROOT . "/instructeur/index");
         } else {
             echo "Internal servererror, het record is niet verwijderd";
-            header("Refresh: 3; URL=" . URLROOT . "/countries/index");
+            header("Refresh: 3; URL=" . URLROOT . "/instructeur/index");
         }
     }
 
@@ -89,20 +89,20 @@ class Countries extends Controller
             // $_POST array schoonmaken
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-            $result = $this->countryModel->createCountry($_POST);
+            $result = $this->instructeurModel->createInstructeur($_POST);
 
             if ($result) {
                 echo "Het invoeren is gelukt";
-                header("Refresh:3; URL=" . URLROOT . "/countries/index");
+                header("Refresh:3; URL=" . URLROOT . "/instructeur/index");
             } else {
                 echo "Het invoeren is NIET gelukt";
-                header("Refresh:3; URL=" . URLROOT . "/countries/index");
+                header("Refresh:3; URL=" . URLROOT . "/instructeur/index");
             }
         }
 
         $data = [
             'title' => 'Voeg een nieuw land toe'
         ];
-        $this->view('countries/create', $data);
+        $this->view('instructeur/create', $data);
     }
 }
