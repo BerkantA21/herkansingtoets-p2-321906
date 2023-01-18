@@ -32,7 +32,8 @@ class Instructeur
                           FROM Instructeur
                           INNER JOIN Auto
                           ON InstructeurId = Instructeur.Id
-                          WHERE InstructeurId = :Id");
+                          WHERE InstructeurId = :Id
+                          ORDER BY Datum_in_dienst DESC");
 
         $this->db->bind(':Id', 2, PDO::PARAM_INT);
 
@@ -53,7 +54,7 @@ class Instructeur
         $this->db->bind(':Type', $data['Type'], PDO::PARAM_STR);
         $this->db->bind(':Bouwjaar', $data['Bouwjaar'], PDO::PARAM_STR);
         $this->db->bind(':Brandstof', $data['Brandstof'], PDO::PARAM_INT);
-        $this->db->bind(':Id', $data['Id'], PDO::PARAM_INT);
+        $this->db->bind(':Id', $data['Id'[0]], PDO::PARAM_INT);
 
         return $this->db->execute();
     }
